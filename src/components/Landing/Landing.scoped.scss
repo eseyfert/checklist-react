@@ -1,0 +1,114 @@
+@use '~@miraidesigns/base';
+@use '~@miraidesigns/fx';
+@use '~@miraidesigns/helpers';
+@use '~@miraidesigns/theme';
+@use '~@miraidesigns/typography';
+@use '~@miraidesigns/utils';
+
+.#{base.$prefix}-slide {
+    &__content--top {
+        justify-content: flex-start;
+    }
+
+    &__controls {
+        position: relative;
+        right: -#{utils.px2rem(8px)};
+    }
+}
+
+.#{base.$prefix}-checklist-list {
+    @include helpers.margin-padding-reset();
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: utils.px2rem(24px);
+    list-style: none;
+
+    &__item {
+        @include helpers.margin(0 0 16px 0);
+        @include helpers.padding(12px 8px);
+
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: var(--background-hover, #{theme.prop('background-hover')});
+        border-radius: utils.px2rem(4px);
+
+        &--complete {
+            background-color: var(--brand-faded, #{theme.prop('brand-faded')});
+
+            .#{base.$prefix}-checklist-list__item-content {
+                cursor: default;
+            }
+
+            .#{base.$prefix}-icon:not(.#{base.$prefix}-button .#{base.$prefix}-icon) {
+                @include helpers.margin(0 16px);
+            }
+        }
+
+        &-content {
+            @include helpers.margin(0 16px 0 8px);
+
+            cursor: pointer;
+        }
+
+        &-title {
+            position: relative;
+            top: utils.px2rem(4px);
+        }
+
+        &-meta {
+            position: relative;
+            bottom: 0;
+            color: var(--secondary, #{theme.prop('secondary')});
+            font-size: utils.px2rem(13px);
+            font-weight: 500;
+        }
+
+        .#{base.$prefix}-button {
+            &:first-of-type {
+                margin-right: utils.px2rem(8px);
+            }
+
+            &:last-of-type {
+                margin-left: auto;
+            }
+        }
+    }
+}
+
+.#{base.$prefix}-group--stacked {
+    width: 100%;
+}
+
+// The button underneath the list of checklists.
+#add-checklist {
+    border-radius: utils.px2rem(4px);
+}
+
+// Default landing text message and button.
+#landing {
+    text-align: center;
+
+    &-heading {
+        @include typography.font-size-responsive(28px, 32px, 40px);
+
+        font-weight: 300;
+        text-align: center;
+
+        strong {
+            color: var(--brand, #{theme.brand()});
+        }
+    }
+
+    .#{base.$prefix}-button {
+        margin-top: utils.px2rem(64px);
+    }
+}
+
+// Small copyright text
+.#{base.$prefix}-copyright {
+    color: var(--secondary, #{theme.prop('secondary')});
+    font-size: utils.px2rem(13px);
+}

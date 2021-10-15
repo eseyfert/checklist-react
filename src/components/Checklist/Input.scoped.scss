@@ -1,0 +1,59 @@
+@forward '~@miraidesigns/checkbox/styles';
+
+@use '~@miraidesigns/base';
+@use '~@miraidesigns/fx';
+@use '~@miraidesigns/helpers';
+@use '~@miraidesigns/theme';
+@use '~@miraidesigns/utils';
+
+.#{base.$prefix}-checklist-textfield {
+    display: flex;
+    align-items: center;
+
+    .#{base.$prefix}-textfield__input {
+        @include helpers.margin(0 0 16px 0);
+        @include helpers.padding(0 16px 8px 16px);
+        @include fx.animation-standard(border-color, 200ms);
+
+        background-color: transparent;
+        font-size: utils.px2rem(20px);
+        border-bottom: utils.px2rem(1px) solid var(--border, #{theme.prop('border')});
+        border-radius: 0;
+
+        &:hover {
+            border-color: var(--border-hover, #{theme.prop('border-hover')});
+            cursor: pointer;
+        }
+
+        &:focus {
+            border-color: var(--brand, #{theme.brand()});
+            border-width: utils.px2rem(2px);
+        }
+    }
+
+    .#{base.$prefix}-button {
+        align-self: flex-start;
+    }
+}
+
+.#{base.$prefix}-checklist {
+    &__item {
+        @include helpers.padding(16px 0 8px 0);
+
+        display: flex;
+        align-items: center;
+        border-bottom: utils.px2rem(1px) solid var(--border, #{theme.prop('border')});
+
+        .#{base.$prefix}-checkbox {
+            align-self: flex-start;
+        }
+
+        label {
+            font-size: utils.px2rem(20px);
+
+            &.done {
+                text-decoration: line-through;
+            }
+        }
+    }
+}

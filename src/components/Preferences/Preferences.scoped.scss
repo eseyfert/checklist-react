@@ -1,0 +1,123 @@
+@use 'sass:map';
+@use '~@miraidesigns/base';
+@use '~@miraidesigns/fx';
+@use '~@miraidesigns/helpers';
+@use '~@miraidesigns/theme';
+@use '~@miraidesigns/utils';
+
+.#{base.$prefix}-slide {
+    &__content {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    &__controls {
+        position: relative;
+        left: utils.px2rem(-16px);
+
+        .#{base.$prefix}-icon {
+            height: utils.px2rem(32px);
+            width: utils.px2rem(32px);
+        }
+    }
+}
+
+.#{base.$prefix}-group {
+    flex-direction: column;
+    width: 100%;
+    margin-top: utils.px2rem(16px);
+
+    &__header {
+        width: 100%;
+        margin: 0;
+        border-bottom: utils.px2rem(1px) solid var(--border, #{theme.prop('border')});
+    }
+
+    &__title {
+        font-size: utils.px2rem(18px);
+        text-transform: uppercase;
+    }
+
+    &__description {
+        @include helpers.margin(2px 0 8px 0);
+
+        color: var(--secondary, #{theme.prop('secondary')});
+        font-size: utils.px2rem(14px);
+    }
+
+    &__grid {
+        @include helpers.margin(12px 0 16px 0);
+
+        display: flex;
+        flex-flow: row wrap;
+        width: 100%;
+    }
+}
+
+.#{base.$prefix}-color {
+    @include helpers.margin(0 8px 8px 0);
+
+    position: relative;
+    display: flex;
+    height: utils.px2rem(64px);
+    width: utils.px2rem(64px);
+    border-radius: utils.px2rem(8px);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &::before {
+        @include fx.animation-standard(transform, 200ms);
+
+        content: '\2764';
+        position: absolute;
+        right: utils.px2rem(4px);
+        bottom: utils.px2rem(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: utils.px2rem(24px);
+        width: utils.px2rem(24px);
+        opacity: 0;
+        padding-top: utils.px2rem(1px);
+        background-color: var(--background, #{theme.prop('background')});
+        color: theme.color('red');
+        font-size: utils.px2rem(13px);
+        border-radius: 50%;
+        box-shadow: inset 0 0 utils.px2rem(4px) rgba(0, 0, 0, 0.33);
+        transform: scale(0.75);
+    }
+
+    &--active {
+        &::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+@each $name, $value in theme.$colors {
+    .#{base.$prefix}-accent-#{$name} {
+        background-color: $value;
+    }
+}
+
+#gradients {
+    @include base.breakpoint('mobile-only') {
+        display: none;
+    }
+}
+
+#theme {
+    .#{base.$prefix}-group {
+        &__grid {
+            margin-top: 0;
+        }
+    }
+
+    .#{base.$prefix}-switch {
+        position: relative;
+        left: -8px;
+    }
+}

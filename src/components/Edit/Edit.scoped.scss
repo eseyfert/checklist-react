@@ -1,0 +1,117 @@
+@use '~@miraidesigns/base';
+@use '~@miraidesigns/fx';
+@use '~@miraidesigns/helpers';
+@use '~@miraidesigns/theme';
+@use '~@miraidesigns/utils';
+
+.#{base.$prefix}-slide {
+    &__controls {
+        position: relative;
+        left: utils.px2rem(-16px);
+
+        .#{base.$prefix}-icon {
+            height: utils.px2rem(32px);
+            width: utils.px2rem(32px);
+        }
+    }
+
+    &__content {
+        justify-content: flex-start;
+        padding-top: utils.px2rem(24px);
+    }
+
+    &__footer {
+        @include helpers.padding(24px 8px);
+
+        @include base.breakpoint('mobile-only') {
+            flex-direction: column;
+        }
+
+        .#{base.$prefix}-button ~ .#{base.$prefix}-button {
+            margin-top: utils.px2rem(16px);
+            color: var(--buttons-complementary, #{theme.prop('buttons-complementary')});
+
+            &:hover,
+            &:focus-visible {
+                background-color: var(--buttons-complementary-hover, #{theme.prop('buttons-complementary-hover')});
+            }
+
+            &:active {
+                background-color: var(--buttons-complementary-active, #{theme.prop('buttons-complementary-active')});
+            }
+
+            @include base.breakpoint('mobile-only') {
+                height: utils.px2rem(40px);
+                font-size: utils.px2rem(14px);
+            }
+
+            @include base.breakpoint('tablet-portrait') {
+                margin-top: 0;
+                margin-left: utils.px2rem(16px);
+            }
+
+            .#{base.$prefix}-icon {
+                fill: var(--buttons-complementary, #{theme.prop('buttons-complementary')});
+            }
+        }
+
+        @include base.breakpoint('tablet-portrait') {
+            @include helpers.padding(24px);
+        }
+    }
+}
+
+input[name='title'] {
+    @include helpers.margin(0 0 16px 0);
+    @include helpers.padding(16px);
+    @include fx.animation-standard(background-color, 200ms);
+
+    font-size: utils.px2rem(20px);
+
+    &:hover {
+        background-color: var(--background-hover, #{theme.prop('background-hover')});
+    }
+
+    &:focus {
+        background-color: var(--background-hover, #{theme.prop('background-active')});
+        border-bottom: utils.px2rem(2px) solid var(--brand, #{theme.brand()});
+    }
+}
+
+.#{base.$prefix}-textfield {
+    max-width: 100%;
+
+    &--state-error {
+        input[name='title'] {
+            @include helpers.margin(0 0 8px 0);
+        }
+    }
+}
+
+.#{base.$prefix}-checklist-textfield {
+    display: flex;
+    align-items: center;
+
+    .#{base.$prefix}-textfield__input {
+        @include helpers.margin(0 0 16px 0);
+        @include helpers.padding(0 16px 8px 16px);
+        @include fx.animation-standard(border-color, 200ms);
+
+        background-color: transparent;
+        font-size: utils.px2rem(20px);
+        border-bottom: utils.px2rem(1px) solid var(--border, #{theme.prop('border')});
+        border-radius: 0;
+
+        &:hover {
+            border-bottom: utils.px2rem(1px) solid var(--border-hover, #{theme.prop('border-hover')});
+        }
+
+        &:focus {
+            border-bottom: utils.px2rem(2px) solid var(--brand, #{theme.brand()});
+        }
+    }
+
+    .#{base.$prefix}-button {
+        align-self: flex-start;
+    }
+}

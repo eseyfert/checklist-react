@@ -1,0 +1,102 @@
+@use '~@miraidesigns/base';
+@use '~@miraidesigns/fx';
+@use '~@miraidesigns/helpers';
+@use '~@miraidesigns/theme';
+@use '~@miraidesigns/utils';
+
+.#{base.$prefix}-group {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+input[name='title'] {
+    @include helpers.margin(0 0 16px 0);
+    @include helpers.padding(16px);
+    @include fx.animation-standard(background-color, 200ms);
+
+    font-size: utils.px2rem(20px);
+
+    &:hover {
+        background-color: var(--background-hover, #{theme.prop('background-hover')});
+    }
+
+    &:focus {
+        background-color: var(--background-hover, #{theme.prop('background-active')});
+        border-bottom: utils.px2rem(2px) solid var(--brand, #{theme.brand()});
+    }
+}
+
+.#{base.$prefix}-textfield--state-error {
+    input[name='title'] {
+        @include helpers.margin(0 0 8px 0);
+    }
+}
+
+.#{base.$prefix}-checklist-textfield {
+    display: flex;
+    align-items: center;
+
+    .#{base.$prefix}-textfield__input {
+        @include helpers.margin(0 0 16px 0);
+        @include helpers.padding(0 16px 8px 16px);
+        @include fx.animation-standard(border-color, 200ms);
+
+        background-color: transparent;
+        font-size: utils.px2rem(20px);
+        border-bottom: utils.px2rem(1px) solid var(--border, #{theme.prop('border')});
+        border-radius: 0;
+
+        &:hover {
+            border-bottom: utils.px2rem(1px) solid var(--border-hover, #{theme.prop('border-hover')});
+        }
+
+        &:focus {
+            border-bottom: utils.px2rem(2px) solid var(--brand, #{theme.brand()});
+        }
+    }
+
+    .#{base.$prefix}-button {
+        align-self: flex-start;
+    }
+}
+
+.#{base.$prefix}-checklist {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &-header {
+        @include helpers.margin(0 0 16px 0);
+        @include helpers.padding(12px 8px);
+
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: var(--background-hover, #{theme.prop('background-hover')});
+        border-radius: utils.px2rem(4px);
+
+        &__title {
+            position: relative;
+            top: 4px;
+        }
+
+        &__meta {
+            position: relative;
+            bottom: 0;
+            color: var(--secondary, #{theme.prop('secondary')});
+            font-size: utils.px2rem(13px);
+            font-weight: 500;
+        }
+
+        .#{base.$prefix}-icon {
+            @include helpers.margin(0 24px 0 16px);
+        }
+    }
+}
+
+#add-input {
+    margin-top: utils.px2rem(8px);
+    margin-bottom: utils.px2rem(32px);
+}

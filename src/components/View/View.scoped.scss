@@ -1,0 +1,32 @@
+@use 'sass:color';
+@use '~@miraidesigns/base';
+@use '~@miraidesigns/fx';
+@use '~@miraidesigns/helpers';
+@use '~@miraidesigns/theme';
+@use '~@miraidesigns/typography';
+@use '~@miraidesigns/utils';
+
+.#{base.$prefix}-slide {
+    &__controls {
+        position: relative;
+        left: utils.px2rem(-16px);
+
+        .#{base.$prefix}-icon {
+            height: utils.px2rem(32px);
+            width: utils.px2rem(32px);
+        }
+    }
+
+    &__content {
+        justify-content: flex-start;
+        padding-top: utils.px2rem(16px);
+
+        .#{base.$prefix}-checklist-form {
+            width: 100%;
+        }
+    }
+
+    &__footer {
+        @include helpers.padding(24px);
+    }
+}
