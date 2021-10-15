@@ -11,7 +11,7 @@ Also allows the user to change various preferences for the app's design.
 
 ## Demo
 
-Feel free to check out [the demo hosted on firebase](https://checklist-vuejs-ac7ea.web.app//).
+Feel free to check out [the demo hosted on firebase](https://checklist-react-9f0c7.web.app/).
 
 ## Other versions
 
